@@ -1,9 +1,6 @@
 <?php
+require "controller.php";
 
-require "model.php";
+$controller = new Controller;
 
-$model = new Model();
-
-$products = $model->getData();
-
-require "view.php";
+$controller->index();
