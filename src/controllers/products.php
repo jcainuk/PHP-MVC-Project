@@ -1,12 +1,12 @@
 <?php
 
-class controller
+class Products
 {
   public function index()
   {
-    require "model.php";
+    require "src/models/product.php";
 
-    $model = new Model;
+    $model = new Product;
 
     $products = $model->getData();
 
