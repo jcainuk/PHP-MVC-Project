@@ -6,14 +6,20 @@ require "src/router.php";
 
 $router = new Router;
 
-$router->add("/home/index", ["controller" => "home", "action" => "index"]);
-$router->add("/products", ["controller" => "products", "action" => "index"]);
-$router->add("/", ["controller" => "home", "action" => "index"]);
+/** Note to self: remove /mvc from the file path in production environment */
+$router->add("/mvc/home/index", ["controller" => "home", "action" => "index"]);
+$router->add("/mvc/products", ["controller" => "products", "action" => "index"]);
+$router->add("/mvc/", ["controller" => "home", "action" => "index"]);
+
+$params = $router->match($path);
+
+var_dump($params);
+exit;
 
 $segments = explode("/", $path);
 
 /**
- * NOTE: if we print_r($segments) here we get the following. 0 is the slash so empty, then 1,2,3 etc.
+ * NOTE: if we print_r($segments) here we get the following. 0 is the slash so empty, then 1,2,3 etc. In production environment indexes different as removing /mvc later
  * Array
  * [0] => 
  * [1] => mvc
