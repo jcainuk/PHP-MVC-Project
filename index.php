@@ -13,22 +13,8 @@ $router->add("/mvc/", ["controller" => "home", "action" => "index"]);
 
 $params = $router->match($path);
 
-var_dump($params);
-exit;
-
-$segments = explode("/", $path);
-
-/**
- * NOTE: if we print_r($segments) here we get the following. 0 is the slash so empty, then 1,2,3 etc. In production environment indexes different as removing /mvc later
- * Array
- * [0] => 
- * [1] => mvc
- * [2] => home
- * [3] => index
- */
-
-$action = $segments[3];
-$controller = $segments[2];
+$action = $params["action"];
+$controller = $params["controller"];
 
 require "src/controllers/$controller.php";
 
